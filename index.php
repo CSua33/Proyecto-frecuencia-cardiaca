@@ -14,6 +14,7 @@ $connectionInfo = array("UID" => "CloudSA1ce0f26e", "pwd" => "{Cafu2025.}", "Dat
 $serverName = "tcp:iotedu.database.windows.net,1433";
 $conn = sqlsrv_connect($serverName, $connectionInfo);
 echo "Hola mundo";
+echo "<br>";
      echo "Connection was established";
      echo "<br>";
 
