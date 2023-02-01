@@ -13,7 +13,7 @@ catch (PDOException $e) {
 $connectionInfo = array("UID" => "CloudSA1ce0f26e", "pwd" => "{Cafu2025.}", "Database" => "pulsoCardiacodb", "LoginTimeout" => 30, "Encrypt" => 1, "TrustServerCertificate" => 0);
 $serverName = "tcp:iotedu.database.windows.net,1433";
 $conn = sqlsrv_connect($serverName, $connectionInfo);
-
+echo "Hola mundo";
 if ($conn === true) {
      echo "Connection was established";
      echo "<br>";
