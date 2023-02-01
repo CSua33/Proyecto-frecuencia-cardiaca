@@ -18,18 +18,5 @@ if ($conn === true) {
      echo "Connection was established";
      echo "<br>";
 
-    $tsql = "SELECT TOP 1 frecuencia FROM [dbo].[raspberry]";
-    $stmt = sqlsrv_query($conn, $tsql);
-    if ($stmt === false) {
-        echo "Error in query execution";
-        echo "<br>";
-        die(print_r(sqlsrv_errors(), true));
-    }
-    while($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
-        echo $row['frecuencia'] . "<br/>" ;
-    }
-    sqlsrv_free_stmt($stmt);
-    sqlsrv_close( $conn);
-                break;
             }
 ?>
