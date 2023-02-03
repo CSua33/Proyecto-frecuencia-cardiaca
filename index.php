@@ -27,8 +27,8 @@ echo "<br>";
     }
     while($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
         echo $row['frecuencia'] . "<br/>" ;
-        if ($row['frecuencia']==40) {
-            "La persona se muere" ;
+        if ($row['frecuencia']<45) {
+            echo "La persona se muere" ;
         }
     }
     sqlsrv_free_stmt($stmt);
