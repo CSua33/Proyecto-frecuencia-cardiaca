@@ -25,12 +25,41 @@ echo "<br>";
         echo "<br>";
         die(print_r(sqlsrv_errors(), true));
     }
-    while($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
-        echo $row['frecuencia'] . "<br/>" ;
+    $row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC);
+       $data = $row['frecuencia'];
+       echo $data;
+       echo "<br>";
         if ($row['frecuencia']<45) {
             echo "La persona se muere" ;
         }
+    
+?>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+<span id="frecuencia"><?php echo $row['frecuencia']; ?></span>
+<script type="text/javascript">
+$(document).ready(function() {	
+    function update(){
+        var current = $('#frecuencia').text();
+        var sum = Number(current) + 1;
+        var dataString = 'sum='+sum;
+ 
+        $.ajax({
+            type: "POST",
+            url: "ejemplo2.php",
+            data: dataString,
+            success: function() {
+                $('#frecuencia').text(sum);
+            }
+        });
     }
+ 
+    //setInterval(update, 1000);
+});
+</script>
+
+<?php
     sqlsrv_free_stmt($stmt);
     sqlsrv_close( $conn);
                 
