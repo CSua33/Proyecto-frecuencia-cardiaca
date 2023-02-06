@@ -1,38 +1,24 @@
-<?php
-// PHP Data Objects(PDO) Sample Code:
-try {
-    $conn = new PDO("sqlsrv:server = tcp:iotedu.database.windows.net,1433; Database = pulsoCardiacodb", "CloudSA1ce0f26e", "{Cafu2025.}");
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-}
-catch (PDOException $e) {
-    print("Error connecting to SQL Server.");
-    die(print_r($e));
-}
+<!DOCTYPE HTML>
+<html>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <head>
+        <title></title>
+    <script
+        src="https://code.jquery.com/jquery-3.6.3.js"
+        integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
+        crossorigin="anonymous"></script>
+    </head>
+<body>
+    <div id="seccionRecargar"></div>
+</body>
+</html>
 
-// SQL Server Extension Sample Code:
-$connectionInfo = array("UID" => "CloudSA1ce0f26e", "pwd" => "{Cafu2025.}", "Database" => "pulsoCardiacodb", "LoginTimeout" => 30, "Encrypt" => 1, "TrustServerCertificate" => 0);
-$serverName = "tcp:iotedu.database.windows.net,1433";
-$conn = sqlsrv_connect($serverName, $connectionInfo);
-echo "Hola mundo";
-echo "<br>";
-     echo "Connection was established";
-     echo "<br>";
-
-    $tsql = "SELECT TOP 1 frecuencia FROM [dbo].[raspberry]";
-    $stmt = sqlsrv_query($conn, $tsql);
-    if ($stmt === false) {
-        echo "Error in query execution";
-        echo "<br>";
-        die(print_r(sqlsrv_errors(), true));
-    }
-    while($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
-        echo $row['frecuencia'] . "<br/>" ;
-        if ($row['frecuencia']<45) {
-            echo "La persona se muere" ;
-        }
-    }
-    sqlsrv_free_stmt($stmt);
-    sqlsrv_close( $conn);
-                
-            
-?>
+<script type="text/javascript">
+    $(document).ready(function(){
+        setInterval(
+            function(){
+                $('#seccionRecargar').load('ejemplo2.php');
+            },2000
+        );
+    });
+</script>
