@@ -17,7 +17,7 @@
     $(document).ready(function(){
         setInterval(
             function(){
-                $('#seccionRecargar').load('ejemplo2.php');
+                $('#seccionRecargar').load('funcionalidad.php');
             },2000
         );
     });

@@ -29,7 +29,6 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
        $data = $row['frecuencia'];?>
 
  <link rel="stylesheet" href="css/bootstrap.min.css">
- <a href="tel:+34123456789">Llamar a la central</a>
 
     <div class="card text-center" style="width: 10rem;">
         <img class="card-img-top" src="corazon.jpg" alt="Card image cap">
@@ -48,7 +47,10 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
       
         <div class="alert alert-danger" role="alert" style="width: 18rem;">
             Alerta: 
-        <?php echo "La persona se muere" ;?>
+        <?php echo "La persona se muere" ;
+            //include("enviarcorreo.php");
+        ?>
+        
         </div>
        
         <?php  }
