@@ -29,7 +29,7 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
        $data = $row['frecuencia'];?>
 
  <link rel="stylesheet" href="css/bootstrap.min.css">
-
+ <div class="mx-auto" style="width: 200px;">
     <div class="card text-center" style="width: 10rem;">
         <img class="card-img-top" src="corazon.jpg" alt="Card image cap">
         <div class="card-body">
@@ -37,20 +37,20 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
             <p class="card-text"><?php echo $data;?></p>
             
         </div>
-        <button type="button" class="btn btn-secondary">Historial</button>
+        <a href="Ejemplo%20graficas/index.php"><button type="button" class="btn btn-secondary">Historial</button></a>
     </div>
-
+    </div>
        <?php
         echo "<br>";
         if ($row['frecuencia']<45) {
         ?>
-      
+      <div class="mx-auto" style="width: 300px;">
         <div class="alert alert-danger" role="alert" style="width: 18rem;">
             Alerta: 
         <?php echo "La persona se muere" ;
             //include("enviarcorreo.php");
         ?>
-        
+        </div>
         </div>
        
         <?php  }
