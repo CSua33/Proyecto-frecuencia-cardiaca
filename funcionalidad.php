@@ -18,7 +18,7 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
      //echo "Connection was established";
      //echo "<br>";
 
-    $tsql = "SELECT TOP 1 frecuencia FROM [dbo].[raspberry] ORDER BY id DESC";
+    $tsql = "SELECT TOP 1 frecuencia FROM [dbo].[ejemplo] ORDER BY id DESC";
     $stmt = sqlsrv_query($conn, $tsql);
     if ($stmt === false) {
         echo "Error in query execution";
@@ -34,7 +34,7 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
         <img class="card-img-top" src="corazon.jpg" alt="Card image cap">
         <div class="card-body">
             <h5 class="card-title">Frecuencia Cardiaca</h5>
-            <p class="card-text"><?php echo $data;?></p>
+            <p class="card-text"><?php echo number_format($data);?></p>
             
         </div>
         <a href="Ejemplo%20graficas/index.php"><button type="button" class="btn btn-secondary">Historial</button></a>
@@ -42,18 +42,54 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
     </div>
        <?php
         echo "<br>";
-        if ($row['frecuencia']<45) {
+        if ($row['frecuencia']<60&&$row['frecuencia']>0) {
         ?>
       <div class="mx-auto" style="width: 300px;">
         <div class="alert alert-danger" role="alert" style="width: 18rem;">
             Alerta: 
-        <?php echo "La persona se muere" ;
+        <?php echo " bradicardia" ;
             //include("enviarcorreo.php");
         ?>
         </div>
         </div>
        
         <?php  }
+               if ($row['frecuencia']>100) {
+                ?>
+              <div class="mx-auto" style="width: 300px;">
+                <div class="alert alert-danger" role="alert" style="width: 18rem;">
+                    Alerta: 
+                <?php echo " taquicardia" ;
+                    //include("enviarcorreo.php");
+                ?>
+                </div>
+                </div>
+               
+                <?php  }
+                if ($row['frecuencia']==0) {
+                    ?>
+                  <div class="mx-auto" style="width: 300px;">
+                    <div class="alert alert-danger" role="alert" style="width: 18rem;">
+                        Alerta: 
+                    <?php echo " PELIGRO" ;
+                        //include("enviarcorreo.php");
+                    ?>
+                    </div>
+                    </div>
+                   
+                    <?php  }
+                if ($row['frecuencia']>=60&&$row['frecuencia']<=100) {
+                    ?>
+                  <div class="mx-auto" style="width: 300px;">
+                   <div class="alert alert-success" role="alert">
+                        Paciente estable 
+                    </div>
+                    </div>
+                   
+                    <?php  }
+                
+                
+                
         sqlsrv_free_stmt($stmt);
         sqlsrv_close( $conn);
 ?>

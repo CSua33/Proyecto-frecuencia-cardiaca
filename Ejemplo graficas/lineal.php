@@ -3,7 +3,7 @@
 	require_once "php/conexion.php"; 
 	$conexion=conexion();
 	//$sql="SELECT fechaVenta,montoVenta from ventas order by fechaVenta";
-	$sql="SELECT CONVERT(CHAR(10), fecha,103),frecuencia FROM [dbo].[raspberry] ORDER BY fecha";
+	$sql="SELECT CONVERT(CHAR(10), fecha,103),frecuencia FROM [dbo].[ejemplo] ORDER BY fecha";
 	$result=sqlsrv_query($conexion,$sql);
 	$valoresY=array();//id
 	$valoresX=array();	$valoresX=array();//frecuencia
